@@ -1,5 +1,6 @@
 import { getCurrentAccount } from "./current-account";
 import { login } from "./login";
+import { getUsers } from "./users";
 
 export const API = {
   currentAccount: {
@@ -7,5 +8,8 @@ export const API = {
   },
   session: {
     login,
+  },
+  users: {
+    get: getUsers,
   },
 };

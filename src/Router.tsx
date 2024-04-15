@@ -5,6 +5,8 @@ import LoginPage from "./pages/loginPage";
 import useCurrentAccount from "./hooks/useCurrentAccount";
 
 import AuthLayout from "./layout/authLayout";
+import LoadingSpinner from "./layout/loadingSpinner";
+import UsersPage from "./pages/usersPage";
 
 // Pages
 
@@ -13,12 +15,12 @@ const Router: React.FC = () => {
 
   const getRouterElement = (): React.ReactNode => {
     return (
-      <>
+      <LoadingSpinner>
         {!!account && (
           <AuthLayout>
             <Routes>
               <Route path={routes.home()} element={undefined} />
-              {/* <Route path={routes.users()} element={<UsersPage />} /> */}
+              <Route path={routes.users()} element={<UsersPage />} />
 
               <Route path="*" element={<Navigate to={routes.home()} />} />
             </Routes>
@@ -32,7 +34,7 @@ const Router: React.FC = () => {
             <Route path="*" element={<Navigate to={routes.login()} />} />
           </Routes>
         )}
-      </>
+      </LoadingSpinner>
     );
   };
 
