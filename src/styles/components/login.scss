@@ -1,0 +1,12 @@
+.login {
+  height: var(--vh);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+
+  form {
+    width: 80%;
+    max-width: 400px;
+  }
+}
