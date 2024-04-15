@@ -1,0 +1,10 @@
+.header {
+  height: 60px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  .user-icon {
+    cursor: pointer;
+  }
+}

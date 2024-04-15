@@ -7,6 +7,7 @@ import useCurrentAccount from "./hooks/useCurrentAccount";
 import AuthLayout from "./layout/authLayout";
 import LoadingSpinner from "./layout/loadingSpinner";
 import UsersPage from "./pages/usersPage";
+import LogoutPage from "./pages/logoutPage";
 
 // Pages
 
@@ -21,6 +22,7 @@ const Router: React.FC = () => {
             <Routes>
               <Route path={routes.home()} element={undefined} />
               <Route path={routes.users()} element={<UsersPage />} />
+              <Route path={routes.logout()} element={<LogoutPage />} />
 
               <Route path="*" element={<Navigate to={routes.home()} />} />
             </Routes>

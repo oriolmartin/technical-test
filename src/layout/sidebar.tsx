@@ -3,7 +3,7 @@ import React, { useMemo } from "react";
 import { Menu, Layout } from "antd";
 import { ItemType } from "antd/es/menu/hooks/useItems";
 
-import { UserOutlined } from "@ant-design/icons";
+import { LogoutOutlined, UserOutlined } from "@ant-design/icons";
 
 import { useLocation, useNavigate } from "react-router-dom";
 import routes from "../routes";
@@ -26,6 +26,14 @@ const Sidebar: React.FC = () => {
       icon: <UserOutlined />,
       onClick: () => {
         navigate(routes.users());
+      },
+    },
+    {
+      key: routes.logout().substring(1),
+      label: "Cerrar sesión",
+      icon: <LogoutOutlined />,
+      onClick: () => {
+        navigate(routes.logout());
       },
     },
   ];
