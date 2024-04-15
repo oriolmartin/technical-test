@@ -9,7 +9,7 @@ interface LoginResponse {
 export async function login(
   email: string,
   password: string
-): Promise<CurrentAccount> {
+): Promise<CurrentAccount | undefined> {
   const response = await post<LoginResponse>("/login", {
     email,
     password,

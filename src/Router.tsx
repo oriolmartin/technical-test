@@ -4,6 +4,8 @@ import routes from "./routes";
 import LoginPage from "./pages/loginPage";
 import useCurrentAccount from "./hooks/useCurrentAccount";
 
+import AuthLayout from "./layout/authLayout";
+
 // Pages
 
 const Router: React.FC = () => {
@@ -13,14 +15,14 @@ const Router: React.FC = () => {
     return (
       <>
         {!!account && (
-          <>aa</>
-          // <AuthLayout>
-          //   <Routes>
-          //     <Route path={routes.domains()} element={<DomainsPage />} />
+          <AuthLayout>
+            <Routes>
+              <Route path={routes.home()} element={undefined} />
+              {/* <Route path={routes.users()} element={<UsersPage />} /> */}
 
-          //     <Route path="*" element={<Navigate to={routes.domains()} />} />
-          //   </Routes>
-          // </AuthLayout>
+              <Route path="*" element={<Navigate to={routes.home()} />} />
+            </Routes>
+          </AuthLayout>
         )}
 
         {!!!account && (

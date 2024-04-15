@@ -13,7 +13,7 @@ const LoginPage: React.FC = () => {
   ): Promise<void> => {
     try {
       const currentAccount = await API.session.login(loginName, password);
-      if (currentAccount) {
+      if (!!currentAccount) {
         setAccount(currentAccount);
       }
     } catch (ex) {

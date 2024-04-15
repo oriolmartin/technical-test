@@ -1,0 +1,25 @@
+module.exports = {
+  extends: ["plugin:@typescript-eslint/all"],
+  ignorePatterns: [],
+  plugins: ["@typescript-eslint"],
+  parser: "@typescript-eslint/parser",
+  parserOptions: {
+    project: "./tsconfig.json",
+  },
+  rules: {
+    "react-hooks/exhaustive-deps": "off",
+    "@typescript-eslint/comma-dangle": "off",
+    "@typescript-eslint/consistent-type-imports": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/indent": "off",
+    "@typescript-eslint/naming-convention": "off",
+    "@typescript-eslint/no-extra-parens": "off",
+    "@typescript-eslint/no-magic-numbers": "off",
+    "@typescript-eslint/no-misused-promises": "off",
+    "@typescript-eslint/no-unnecessary-condition": "off",
+    "@typescript-eslint/non-nullable-type-assertion-style": "off",
+    "@typescript-eslint/object-curly-spacing": "off",
+    "@typescript-eslint/prefer-readonly-parameter-types": "off",
+    "@typescript-eslint/space-before-function-paren": "off",
+  },
+};
