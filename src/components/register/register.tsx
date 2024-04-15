@@ -4,13 +4,20 @@ import { useNavigate } from "react-router-dom";
 import routes from "../../routes";
 
 interface Props {
-  onSubmitForm: (email: string, password: string) => void;
+  onSubmitForm: (
+    email: string,
+    password: string,
+    name: string,
+    surname: string
+  ) => void;
 }
 
-const Login: React.FC<Props> = ({ onSubmitForm }: Props) => {
+const Register: React.FC<Props> = ({ onSubmitForm }: Props) => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const [surname, setSurname] = useState("");
 
   const onEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
@@ -18,14 +25,20 @@ const Login: React.FC<Props> = ({ onSubmitForm }: Props) => {
   const onPasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(event.target.value);
   };
+  const onNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setName(event.target.value);
+  };
+  const onSurnameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSurname(event.target.value);
+  };
   const onFinish = (form: Record<string, string>) => {
-    onSubmitForm(form.email, form.password);
+    onSubmitForm(form.email, form.password, form.name, form.surname);
   };
 
   return (
-    <div className="login">
+    <div className="register">
       <Form onFinish={onFinish}>
-        <span className="login__hint">Email</span>
+        <span className="register__hint">Email</span>
         <Form.Item
           name="email"
           rules={[
@@ -47,7 +60,7 @@ const Login: React.FC<Props> = ({ onSubmitForm }: Props) => {
           />
         </Form.Item>
 
-        <span className="login__hint">Password</span>
+        <span className="register__hint">Password</span>
         <Form.Item
           name="password"
           rules={[
@@ -69,22 +82,64 @@ const Login: React.FC<Props> = ({ onSubmitForm }: Props) => {
           />
         </Form.Item>
 
+        <span className="register__hint">Name</span>
+        <Form.Item
+          name="name"
+          rules={[
+            {
+              required: true,
+              message: "El nombre es obligatorio",
+            },
+          ]}
+        >
+          <Input
+            value={name}
+            onChange={onNameChange}
+            id="name"
+            type="name"
+            name="name"
+            placeholder="Name"
+            aria-required="true"
+          />
+        </Form.Item>
+
+        <span className="register__hint">Surname</span>
+        <Form.Item
+          name="surname"
+          rules={[
+            {
+              required: true,
+              message: "El apellido es obligatorio",
+            },
+          ]}
+        >
+          <Input
+            value={surname}
+            onChange={onSurnameChange}
+            id="surname"
+            type="surname"
+            name="surname"
+            placeholder="Surname"
+            aria-required="true"
+          />
+        </Form.Item>
+
         <Form.Item>
           <Button type="primary" key="submit" htmlType="submit">
-            Login
+            Register
           </Button>
         </Form.Item>
 
         <a
           onClick={() => {
-            navigate(routes.register());
+            navigate(routes.login());
           }}
         >
-          Register
+          Login
         </a>
       </Form>
     </div>
   );
 };
 
-export default Login;
+export default Register;

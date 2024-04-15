@@ -13,6 +13,7 @@ module.exports = {
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/indent": "off",
     "@typescript-eslint/naming-convention": "off",
+    "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/no-extra-parens": "off",
     "@typescript-eslint/no-floating-promises": "off",
     "@typescript-eslint/no-magic-numbers": "off",

@@ -55,6 +55,19 @@ export async function post<T>(path: string, json: unknown = {}): Promise<T> {
   }
 }
 
+export async function postNoJson(
+  path: string,
+  json: unknown = {}
+): Promise<any> {
+  try {
+    return await trackPromise(
+      ky.post(getUrlPath(path), { headers: getAuthHeader(), json })
+    );
+  } catch (e) {
+    return retreiveErrors(e);
+  }
+}
+
 export async function put(path: string, json: unknown = {}): Promise<any> {
   try {
     return await trackPromise(

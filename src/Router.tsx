@@ -8,6 +8,7 @@ import AuthLayout from "./layout/authLayout";
 import LoadingSpinner from "./layout/loadingSpinner";
 import UsersPage from "./pages/usersPage";
 import LogoutPage from "./pages/logoutPage";
+import RegisterPage from "./pages/registerPage";
 
 // Pages
 
@@ -32,6 +33,7 @@ const Router: React.FC = () => {
         {!!!account && (
           <Routes>
             <Route path={routes.login()} element={<LoginPage />} />
+            <Route path={routes.register()} element={<RegisterPage />} />
 
             <Route path="*" element={<Navigate to={routes.login()} />} />
           </Routes>
