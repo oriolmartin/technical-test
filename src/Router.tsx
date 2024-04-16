@@ -10,8 +10,6 @@ import UsersPage from "./pages/usersPage";
 import LogoutPage from "./pages/logoutPage";
 import RegisterPage from "./pages/registerPage";
 
-// Pages
-
 const Router: React.FC = () => {
   const { account } = useCurrentAccount();
 

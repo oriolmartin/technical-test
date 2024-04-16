@@ -1,16 +1,18 @@
 import React, { useMemo } from "react";
 
-import { Menu, Layout } from "antd";
+import { Menu, Layout, Drawer } from "antd";
 import { ItemType } from "antd/es/menu/hooks/useItems";
 
 import { LogoutOutlined, UserOutlined } from "@ant-design/icons";
 
 import { useLocation, useNavigate } from "react-router-dom";
 import routes from "../routes";
+import useEnvironment from "../hooks/useEnvironment";
 
 const Sidebar: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const { isMobile, isMenuOpen, setIsMenuOpen } = useEnvironment();
 
   const selectedMenu = useMemo(() => {
     const paths = location.pathname.split("/");
@@ -26,6 +28,7 @@ const Sidebar: React.FC = () => {
       icon: <UserOutlined />,
       onClick: () => {
         navigate(routes.users());
+        setIsMenuOpen(false);
       },
     },
     {
@@ -34,11 +37,23 @@ const Sidebar: React.FC = () => {
       icon: <LogoutOutlined />,
       onClick: () => {
         navigate(routes.logout());
+        setIsMenuOpen(false);
       },
     },
   ];
 
-  return (
+  return isMobile ? (
+    <Drawer
+      rootClassName="mobile-menu"
+      placement="left"
+      onClose={() => {
+        setIsMenuOpen(false);
+      }}
+      open={isMenuOpen}
+    >
+      <Menu theme="dark" selectedKeys={[selectedMenu]} items={items} />
+    </Drawer>
+  ) : (
     <Layout.Sider className="sider">
       <Menu theme="dark" selectedKeys={[selectedMenu]} items={items} />
     </Layout.Sider>

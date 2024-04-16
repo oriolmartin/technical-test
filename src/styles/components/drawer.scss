@@ -1,0 +1,21 @@
+.mobile-menu {
+  .ant-drawer-content-wrapper {
+    width: 200px !important;
+
+    @media (max-width: 200px) {
+      width: "100% !important";
+    }
+  }
+
+  .ant-drawer-header {
+    background-color: #001529;
+    .anticon {
+      color: rgba(255, 255, 255, 0.65);
+    }
+  }
+
+  .ant-drawer-body {
+    padding: 0;
+    background-color: #001529;
+  }
+}

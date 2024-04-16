@@ -18,6 +18,7 @@ module.exports = {
     "@typescript-eslint/no-floating-promises": "off",
     "@typescript-eslint/no-magic-numbers": "off",
     "@typescript-eslint/no-misused-promises": "off",
+    "@typescript-eslint/no-type-alias": "off",
     "@typescript-eslint/no-unnecessary-condition": "off",
     "@typescript-eslint/non-nullable-type-assertion-style": "off",
     "@typescript-eslint/object-curly-spacing": "off",
