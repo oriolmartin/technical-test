@@ -5,9 +5,23 @@
   align-items: center;
   justify-content: center;
   margin: auto;
+  flex-direction: column;
 
   form {
     width: 80%;
     max-width: 400px;
+  }
+
+  a {
+    margin-top: 10px;
+  }
+}
+
+.form {
+  &__label {
+    &__required {
+      margin-left: 3px;
+      color: red;
+    }
   }
 }

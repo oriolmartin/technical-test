@@ -1,7 +1,6 @@
 import { post, postNoJson, setToken } from "./client";
 import { CurrentAccount } from "../models/current-account.model";
 import { API } from ".";
-import { User } from "../models/user.model";
 
 interface LoginResponse {
   auth_token: string;
@@ -25,6 +24,6 @@ export function logout(): void {
   setToken(null);
 }
 
-export async function register(user: User): Promise<any> {
+export async function register(user: Record<string, any>): Promise<any> {
   return postNoJson("/login/create", user);
 }

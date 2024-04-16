@@ -1,28 +1,35 @@
 import React from "react";
 
-import { API } from "../api";
-import Register from "../components/register/register";
 import routes from "../routes";
 import { useNavigate } from "react-router-dom";
+import UserForm from "../components/users/userForm";
+import { Button } from "antd";
 
 const RegisterPage: React.FC = () => {
   const navigate = useNavigate();
 
-  const submitForm = async (
-    email: string,
-    password: string,
-    name: string,
-    surname: string
-  ): Promise<void> => {
-    try {
-      await API.session.register({ email, password, name, surname });
-      navigate(routes.home());
-    } catch (ex) {
-      //TODO: mostrar error al loguearse
-    }
+  const submitForm = (): void => {
+    navigate(routes.home());
   };
 
-  return <Register onSubmitForm={submitForm} />;
+  // return <Register onSubmitForm={submitForm} />;
+  return (
+    <div className="register">
+      <UserForm onFinishRegister={submitForm} />
+
+      <Button key="submit" form="user-form" type="primary" htmlType="submit">
+        Register
+      </Button>
+
+      <a
+        onClick={() => {
+          navigate(routes.login());
+        }}
+      >
+        Login
+      </a>
+    </div>
+  );
 };
 
 export default RegisterPage;
