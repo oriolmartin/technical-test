@@ -2,11 +2,12 @@ import React from "react";
 import { User } from "../../models/user.model";
 import FormattedTable from "../shared/table";
 import { Button, Space } from "antd";
-import { EditOutlined } from "@ant-design/icons";
+import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 
 interface Props {
   users: User[];
   onEdit?: (id: string) => void;
+  onDelete?: (id: string) => void;
 }
 
 interface UserTableItem {
@@ -17,7 +18,7 @@ interface UserTableItem {
   email: string;
 }
 
-const UsersList: React.FC<Props> = ({ users, onEdit }: Props) => {
+const UsersList: React.FC<Props> = ({ users, onEdit, onDelete }: Props) => {
   const data: UserTableItem[] = users.map((user: User) => {
     return {
       id: user._id,
@@ -40,6 +41,16 @@ const UsersList: React.FC<Props> = ({ users, onEdit }: Props) => {
           }}
         >
           <EditOutlined />
+        </Button>
+      )}
+      {!!onDelete && (
+        <Button
+          type="link"
+          onClick={() => {
+            onDelete(record.id);
+          }}
+        >
+          <DeleteOutlined />
         </Button>
       )}
     </Space>

@@ -1,6 +1,6 @@
 import { getCurrentAccount } from "./current-account";
 import { login, logout, register } from "./login";
-import { createUser, editUser, getUsers, showUser } from "./users";
+import { createUser, deleteUser, editUser, getUsers, showUser } from "./users";
 
 export const API = {
   currentAccount: {
@@ -16,5 +16,6 @@ export const API = {
     show: showUser,
     new: createUser,
     edit: editUser,
+    delete: deleteUser,
   },
 };

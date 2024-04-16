@@ -6,12 +6,14 @@ interface Props {
   isFormModalVisible: boolean;
   onFinish?: () => void;
   onCancel: () => void;
+  confirmationMessage: string;
 }
 
 const ConfirmationModal: React.FC<Props> = ({
   isFormModalVisible,
   onFinish,
   onCancel,
+  confirmationMessage,
 }: Props) => {
   return (
     <Modal
@@ -24,7 +26,7 @@ const ConfirmationModal: React.FC<Props> = ({
       maskClosable={false}
       keyboard={false}
     >
-      Hay cambios no guardados, ¿desea continuar?
+      {confirmationMessage}
     </Modal>
   );
 };

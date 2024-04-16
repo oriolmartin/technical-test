@@ -31,12 +31,12 @@ const ModalForm: React.FC<Props> = ({
   isFormTouched,
 }: Props) => {
   const { promiseInProgress } = usePromiseTracker();
-  const [confirmationModalVisible, setConfirmationModalVisible] =
+  const [isConfirmationModalVisible, setIsConfirmationModalVisible] =
     useState<boolean>(false);
 
   const onClose = () => {
     if (isFormTouched) {
-      setConfirmationModalVisible(true);
+      setIsConfirmationModalVisible(true);
     } else {
       onCancel();
     }
@@ -82,11 +82,12 @@ const ModalForm: React.FC<Props> = ({
       </Modal>
 
       <ConfirmationModal
-        isFormModalVisible={confirmationModalVisible}
+        isFormModalVisible={isConfirmationModalVisible}
         onCancel={() => {
-          setConfirmationModalVisible(false);
+          setIsConfirmationModalVisible(false);
         }}
         onFinish={onCancel}
+        confirmationMessage="Hay cambios no guardados, ¿desea continuar?"
       />
     </>
   );
