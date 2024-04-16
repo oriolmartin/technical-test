@@ -5,8 +5,11 @@ import { API } from "../api";
 import UserForm from "../components/users/userForm";
 import ModalForm from "../components/shared/modalForm";
 import ConfirmationModal from "../components/shared/confirmationModal";
+import useEnvironment from "../hooks/useEnvironment";
+import UserMobileList from "../components/users/userMobileList";
 
 const UsersPage: React.FC = () => {
+  const { isMobile } = useEnvironment();
   const [users, setUsers] = useState<User[]>([]);
   const [selected, setSelected] = useState<User>();
   const [isFormModalVisible, setIsFormModalVisible] = useState<boolean>(false);
@@ -42,7 +45,11 @@ const UsersPage: React.FC = () => {
 
   return (
     <>
-      <UsersList users={users} onEdit={onEdit} onDelete={onDelete} />
+      {isMobile ? (
+        <UserMobileList users={users} onEdit={onEdit} onDelete={onDelete} />
+      ) : (
+        <UsersList users={users} onEdit={onEdit} onDelete={onDelete} />
+      )}
 
       {!!isFormModalVisible && (
         <ModalForm
